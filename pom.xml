@@ -11,6 +11,7 @@
     <modules>
         <module>nosql-unit-core</module>
         <module>nosql-unit-aerospike</module>
+        <module>nosql-unit-api</module>
     </modules>
 
     <name>nosql-unit</name>
@@ -19,10 +20,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <slf4j-simple.version>1.7.21</slf4j-simple.version>
+        <snakeyaml.version>1.25</snakeyaml.version>
+        <aerospike-client.version>4.4.5</aerospike-client.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.github.zghurskyi</groupId>
+                <artifactId>nosql-unit-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.zghurskyi</groupId>
+                <artifactId>nosql-unit-aerospike</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>io.github.zghurskyi</groupId>
                 <artifactId>nosql-unit-core</artifactId>
@@ -31,17 +46,22 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <version>${junit.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.7.21</version>
+                <version>${slf4j-simple.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
-                <version>1.25</version>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aerospike</groupId>
+                <artifactId>aerospike-client</artifactId>
+                <version>${aerospike-client.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
