@@ -17,10 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class AnnotationUtils {
 
+    private static final Map<AnnotationCacheKey, Annotation> annotationCache = new ConcurrentHashMap<>(256);
+
     private AnnotationUtils() {
     }
-
-    private static final Map<AnnotationCacheKey, Annotation> annotationCache = new ConcurrentHashMap<>(256);
 
     public static boolean isAnnotated(AnnotatedElement element, Class<? extends Annotation> annotationType) {
         return findAnnotation(element, annotationType) != null;
@@ -109,6 +109,15 @@ public final class AnnotationUtils {
         return (annotationType != null && annotationType.getName().startsWith("java.lang.annotation"));
     }
 
+    public static <A extends Annotation> A findAnnotation(Description description, Class<A> class1) {
+        try {
+            Method method = description.getTestClass().getMethod(description.getMethodName());
+            return findAnnotation(method, class1);
+        } catch (NoSuchMethodException | SecurityException e) {
+            throw new RuntimeException(String.format("Could not find method %s on test class %s ", description.getMethodName(), description.getTestClass().getName()));
+        }
+    }
+
     private static class AnnotationCacheKey {
 
         private final AnnotatedElement element;
@@ -134,14 +143,5 @@ public final class AnnotationUtils {
             return Objects.hash(this.element, this.annotationType);
         }
 
-    }
-
-    public static <A extends Annotation> A findAnnotation(Description description, Class<A> class1) {
-        try {
-            Method method = description.getTestClass().getMethod(description.getMethodName());
-            return findAnnotation(method, class1);
-        } catch (NoSuchMethodException | SecurityException e) {
-            throw new RuntimeException(String.format("Could not find method %s on test class %s ", description.getMethodName(), description.getTestClass().getName()));
-        }
     }
 }

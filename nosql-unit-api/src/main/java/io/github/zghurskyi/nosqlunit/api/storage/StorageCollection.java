@@ -5,12 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Storage {
-    public final String collection;
-    public final List<Map<String, Object>> data;
+public class StorageCollection {
+    public String name;
+    public List<Map<String, Object>> data;
 
-    public Storage(String collection) {
-        this.collection = collection;
+    public StorageCollection() {
+    }
+
+    public StorageCollection(String name) {
+        this.name = name;
         this.data = new ArrayList<>();
     }
 

@@ -7,7 +7,7 @@ public interface StorageDataSet {
 
     void createStorageDataSet(String key, List<Map<String, Object>> values);
 
-    Map<String, Storage> getStorageDataSet();
+    Map<String, StorageCollection> getStorageDataSet();
 
 
 }

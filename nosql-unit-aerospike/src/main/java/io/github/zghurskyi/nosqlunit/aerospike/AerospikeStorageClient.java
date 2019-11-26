@@ -3,10 +3,10 @@ package io.github.zghurskyi.nosqlunit.aerospike;
 import com.aerospike.client.AerospikeClient;
 import com.aerospike.client.Host;
 import com.aerospike.client.policy.ClientPolicy;
-import io.github.zghurskyi.nosqlunit.api.storage.StorageDataSet;
 import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
 import io.github.zghurskyi.nosqlunit.api.properties.SeedStrategy;
 import io.github.zghurskyi.nosqlunit.api.storage.StorageClient;
+import io.github.zghurskyi.nosqlunit.api.storage.StorageDataSet;
 
 public class AerospikeStorageClient implements StorageClient {
 

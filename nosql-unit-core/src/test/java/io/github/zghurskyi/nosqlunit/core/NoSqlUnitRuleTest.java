@@ -1,11 +1,12 @@
 package io.github.zghurskyi.nosqlunit.core;
 
-import io.github.zghurskyi.nosqlunit.aerospike.AerospikeStorageClient;
 import io.github.zghurskyi.nosqlunit.api.annotation.ExpectedDataSet;
 import io.github.zghurskyi.nosqlunit.api.annotation.InitialDataSet;
 import io.github.zghurskyi.nosqlunit.core.executor.DefaultDataSetExecutor;
+import io.github.zghurskyi.nosqlunit.core.teststorage.YamlStorageClient;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -13,16 +14,18 @@ import org.junit.runners.JUnit4;
 public class NoSqlUnitRuleTest {
 
     @Rule
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
+    @Rule
     public NoSqlUnitRule noSqlUnitRule = NoSqlUnitRule.NoSqlUnitRuleBuilder.instance()
             .executor(DefaultDataSetExecutor.DataSetExecutorBuilder.instance()
-                    .storageClient(AerospikeStorageClient.AerospikeStorageClientBuilder.instance()
-                            .build())
+                    .storageClient(new YamlStorageClient(temporaryFolder))
                     .build())
             .build();
 
     @Test
-    @InitialDataSet
-    @ExpectedDataSet
+    @InitialDataSet("initial-users.yml")
+    @ExpectedDataSet("expected-users.yml")
     public void storageTest() {
 
     }

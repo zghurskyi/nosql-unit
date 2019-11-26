@@ -1,10 +1,10 @@
 package io.github.zghurskyi.nosqlunit.core.executor;
 
+import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
+import io.github.zghurskyi.nosqlunit.api.storage.StorageClient;
 import io.github.zghurskyi.nosqlunit.api.storage.StorageDataSet;
 import io.github.zghurskyi.nosqlunit.core.assertion.DataSetAssertion;
-import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
 import io.github.zghurskyi.nosqlunit.core.dataset.YamlDataSet;
-import io.github.zghurskyi.nosqlunit.api.storage.StorageClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

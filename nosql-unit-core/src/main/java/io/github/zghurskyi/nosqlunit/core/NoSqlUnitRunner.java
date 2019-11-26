@@ -34,7 +34,7 @@ public class NoSqlUnitRunner {
                 DataSetProperties dataSetProperties = new DataSetProperties(expectedDataSet.value());
                 executor.compareCurrentWithExpectedDataSet(dataSetProperties);
             } catch (Throwable throwable) {
-                String message = String.format("Can't create expected dataSet for test '%s'.", context.getMethodName());
+                String message = String.format("Compare failed for test '%s'.", context.getMethodName());
                 throw new IllegalStateException(message, throwable);
             }
         }

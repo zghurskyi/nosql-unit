@@ -1,6 +1,6 @@
 package io.github.zghurskyi.nosqlunit.core.dataset;
 
-import io.github.zghurskyi.nosqlunit.api.storage.Storage;
+import io.github.zghurskyi.nosqlunit.api.storage.StorageCollection;
 import io.github.zghurskyi.nosqlunit.api.storage.StorageDataSet;
 import org.yaml.snakeyaml.Yaml;
 
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class YamlDataSet implements StorageDataSet {
 
-    private final Map<String, Storage> storageByNamespace = new HashMap<>();
+    private final Map<String, StorageCollection> storageByNamespace = new HashMap<>();
 
     public YamlDataSet(InputStream source) {
         Map<String, List<Map<String, Object>>> data = new Yaml().load(source);
@@ -22,15 +22,15 @@ public class YamlDataSet implements StorageDataSet {
 
     @Override
     public void createStorageDataSet(String collection, List<Map<String, Object>> data) {
-        Storage storage = new Storage(collection);
+        StorageCollection storageCollection = new StorageCollection(collection);
         if (data != null) {
-            data.forEach(storage::addRow);
+            data.forEach(storageCollection::addRow);
         }
-        storageByNamespace.put(collection.toUpperCase(), storage);
+        storageByNamespace.put(collection.toUpperCase(), storageCollection);
     }
 
     @Override
-    public Map<String, Storage> getStorageDataSet() {
+    public Map<String, StorageCollection> getStorageDataSet() {
         return storageByNamespace;
     }
 }
