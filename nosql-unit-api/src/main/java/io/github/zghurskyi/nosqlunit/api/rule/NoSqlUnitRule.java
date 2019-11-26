@@ -1,6 +1,6 @@
-package io.github.zghurskyi.nosqlunit.core;
+package io.github.zghurskyi.nosqlunit.api.rule;
 
-import io.github.zghurskyi.nosqlunit.core.executor.DataSetExecutor;
+import io.github.zghurskyi.nosqlunit.api.executor.DataSetExecutor;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;

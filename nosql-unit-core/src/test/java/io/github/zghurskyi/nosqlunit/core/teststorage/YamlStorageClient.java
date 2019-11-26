@@ -44,7 +44,7 @@ public class YamlStorageClient implements StorageClient {
             temporaryFile = temporaryFolder.newFile("test-data.yml");
             FileUtils.write(temporaryFile, writer.toString(), StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException(e);
         }
     }
 
@@ -58,7 +58,6 @@ public class YamlStorageClient implements StorageClient {
         try {
             return new YamlDataSet(FileUtils.openInputStream(temporaryFile));
         } catch (IOException e) {
-            e.printStackTrace();
             throw new IllegalStateException(e);
         }
     }

@@ -1,4 +1,4 @@
-package io.github.zghurskyi.nosqlunit.core.executor;
+package io.github.zghurskyi.nosqlunit.api.executor;
 
 import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
 

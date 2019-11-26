@@ -1,7 +1,7 @@
-package io.github.zghurskyi.nosqlunit.core;
+package io.github.zghurskyi.nosqlunit.api.rule;
 
-import io.github.zghurskyi.nosqlunit.core.executor.DataSetExecutor;
-import io.github.zghurskyi.nosqlunit.core.utils.AnnotationUtils;
+import io.github.zghurskyi.nosqlunit.api.annotation.Annotations;
+import io.github.zghurskyi.nosqlunit.api.executor.DataSetExecutor;
 import org.junit.runner.Description;
 
 import java.lang.annotation.Annotation;
@@ -22,10 +22,10 @@ public class DefaultNoSqlUnitTestContext implements NoSqlUnitTestContext {
     }
 
     @Override
-    public <T extends Annotation> T getAnnotation(Class<T> clazz) {
+    public <T extends Annotation> T getAnnotation(Class<T> type) {
 
-        T classAnnotation = getClassAnnotation(clazz);
-        T methodAnnotation = getMethodAnnotation(clazz);
+        T classAnnotation = getClassAnnotation(type);
+        T methodAnnotation = getMethodAnnotation(type);
 
         if (methodAnnotation != null) {
             return methodAnnotation;
@@ -40,16 +40,16 @@ public class DefaultNoSqlUnitTestContext implements NoSqlUnitTestContext {
     }
 
     @Override
-    public <T extends Annotation> T getMethodAnnotation(Class<T> clazz) {
+    public <T extends Annotation> T getMethodAnnotation(Class<T> type) {
         if (description.isTest()) {
-            return AnnotationUtils.findAnnotation(description, clazz);
+            return Annotations.findAnnotation(description, type);
         }
 
         return null;
     }
 
     @Override
-    public <T extends Annotation> T getClassAnnotation(Class<T> clazz) {
-        return AnnotationUtils.findAnnotation(description.getTestClass(), clazz);
+    public <T extends Annotation> T getClassAnnotation(Class<T> type) {
+        return Annotations.findAnnotation(description.getTestClass(), type);
     }
 }

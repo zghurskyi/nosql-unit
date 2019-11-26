@@ -2,6 +2,7 @@ package io.github.zghurskyi.nosqlunit.core;
 
 import io.github.zghurskyi.nosqlunit.api.annotation.ExpectedDataSet;
 import io.github.zghurskyi.nosqlunit.api.annotation.InitialDataSet;
+import io.github.zghurskyi.nosqlunit.api.rule.NoSqlUnitRule;
 import io.github.zghurskyi.nosqlunit.core.executor.DefaultDataSetExecutor;
 import io.github.zghurskyi.nosqlunit.core.teststorage.YamlStorageClient;
 import org.junit.Rule;
@@ -26,7 +27,12 @@ public class NoSqlUnitRuleTest {
     @Test
     @InitialDataSet("initial-users.yml")
     @ExpectedDataSet("expected-users.yml")
-    public void storageTest() {
+    public void storageTestSuccess() {
+    }
 
+    @Test
+    @InitialDataSet("initial-users.yml")
+    @ExpectedDataSet("empty-users.yml")
+    public void storageTestFailure() {
     }
 }

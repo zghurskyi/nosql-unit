@@ -1,5 +1,6 @@
 package io.github.zghurskyi.nosqlunit.core.executor;
 
+import io.github.zghurskyi.nosqlunit.api.executor.DataSetExecutor;
 import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
 import io.github.zghurskyi.nosqlunit.api.storage.StorageClient;
 import io.github.zghurskyi.nosqlunit.api.storage.StorageDataSet;

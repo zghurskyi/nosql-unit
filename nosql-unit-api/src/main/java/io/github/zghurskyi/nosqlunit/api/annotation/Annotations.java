@@ -1,4 +1,4 @@
-package io.github.zghurskyi.nosqlunit.core.utils;
+package io.github.zghurskyi.nosqlunit.api.annotation;
 
 import org.junit.runner.Description;
 
@@ -15,17 +15,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * Adpated from JUnit5 AnnotationUtils:
  * https://github.com/junit-team/junit5/blob/master/junit-platform-commons/src/main/java/org/junit/platform/commons/util/AnnotationUtils.java
  */
-public final class AnnotationUtils {
+public final class Annotations {
 
     private static final Map<AnnotationCacheKey, Annotation> annotationCache = new ConcurrentHashMap<>(256);
 
-    private AnnotationUtils() {
+    private Annotations() {
     }
 
     public static boolean isAnnotated(AnnotatedElement element, Class<? extends Annotation> annotationType) {
         return findAnnotation(element, annotationType) != null;
     }
-
 
     public static <A extends Annotation> A findAnnotation(AnnotatedElement element, Class<A> annotationType) {
         return findAnnotation(element, annotationType, new HashSet<Annotation>());

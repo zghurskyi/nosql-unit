@@ -1,9 +1,9 @@
-package io.github.zghurskyi.nosqlunit.core;
+package io.github.zghurskyi.nosqlunit.api.rule;
 
 import io.github.zghurskyi.nosqlunit.api.annotation.ExpectedDataSet;
 import io.github.zghurskyi.nosqlunit.api.annotation.InitialDataSet;
 import io.github.zghurskyi.nosqlunit.api.properties.DataSetProperties;
-import io.github.zghurskyi.nosqlunit.core.executor.DataSetExecutor;
+import io.github.zghurskyi.nosqlunit.api.executor.DataSetExecutor;
 
 
 public class NoSqlUnitRunner {
